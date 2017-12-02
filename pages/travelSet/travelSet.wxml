@@ -1,0 +1,15 @@
+<view class='content'>
+      <view class='header'>
+          <view class='del' bindtap='del'><image src="../image/dels.png" mode='widthFix'></image></view>
+          <view class='save' bindtap='save'><image src="../image/save.png" mode='widthFix'></image></view>
+      </view>
+      <view class='name'>物品 </view>
+      <view class='title'>
+          <input  bindinput="nameInput" value='拖鞋'/>
+      </view>
+      <view class='name'>类别</view>
+      <view class='title'bindtap="themeInput">
+          <input value='鞋子' disabled/>
+          <image class='next' src="../image/next.png" mode='widthFix'></image>
+      </view>
+</view>
