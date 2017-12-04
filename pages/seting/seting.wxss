@@ -41,9 +41,11 @@
 }
 .content .title input{
     flex:1;
+    position: relative;
+    top: 18rpx;
 }
 .content .remarks{
-  font-size: 22rpx;
+  font-size: 26rpx;
   color: #626262;
   position: relative;
   padding: 20rpx 0;

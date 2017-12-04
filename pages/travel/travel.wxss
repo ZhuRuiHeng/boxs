@@ -1,13 +1,14 @@
 /**index.wxss**/
-.container{
+.boxs{
     margin-bottom: 100rpx;
+    overflow: hidden;
 }
 .header{
   width: 100%;
   background: #c2c2c2;
   color: #fff;
   font-size: 32rpx;
-  padding: 20rpx;
+  padding: 10rpx 20rpx;
   box-sizing: border-box;
 }
 .container .item{
@@ -51,7 +52,7 @@
    width: 90%;
 }
 .item .set{
-   width:80rpx;
+   width:100rpx;
 }
 .item .text .title{
   font-size: 32rpx;
@@ -83,13 +84,16 @@
     box-sizing:border-box;
 }
 .footer{
-  position: absolute;
+  position: fixed;
   width: 100%;
   bottom: 0;
   left: 0;
   background: #cccccc;
-  padding: 16rpx 0 0 0;
+  padding: 16rpx;
+  box-sizing: border-box;
   text-align: center;
+  display: flex;
+  justify-content: space-around;
 }
 .footer image{
   width: 70rpx;

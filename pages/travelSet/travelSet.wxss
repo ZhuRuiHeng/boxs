@@ -1,5 +1,6 @@
 .content{
   width: 100%;
+  overflow: hidden;
 }
 .header{
   display: flex;
@@ -51,6 +52,15 @@
 .content .title input{
     flex:1;
     color: #000;
+    position: relative;
+    top: 18rpx;
+}
+button{
+  background: #3670eb;
+  color: #fff;
+  width: 90%;
+  margin: 90rpx auto 0;
+  font-size: 32rpx;
 }
 button{
   background: #3670eb;

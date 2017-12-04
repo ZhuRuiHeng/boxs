@@ -9,12 +9,12 @@ Page({
    */
   data: {
     mode:false,
-    _cat_id:'' //当前选中的分类
   },
   onLoad: function (options) {
+    console.log("options:", options);
       this.setData({
         lu_id: options.lu_id,
-        _cat_id: options.cat_id
+        cat_id: options.cat_id
       })
   },
   onShow: function () {
@@ -116,13 +116,19 @@ Page({
     })
   },
   tapTheme(e){
-    let _cat_id = e.currentTarget.dataset.cat_id;
-    wx.setStorageSync('_cat_id', _cat_id); //从缓存拿当前的物品给travel
-    this.setData({
-      _cat_id
-    })
+    console.log('e:',e);
+    let that = this;
+    let cat_id = e.currentTarget.dataset.cat_id;
+    let cat_name = e.currentTarget.dataset.cat_name;
+    wx.setStorageSync('cat_id', cat_id);
+    wx.setStorageSync('cat_name', cat_name);
+    console.log('redirectTo,wx.navigateBack');
+    var pages = getCurrentPages();
+    console.log("pages:", pages);
     setTimeout(function(){
-       wx.navigateBack({})
+      wx.navigateBack({
+        url: '../theme/theme?lu_id=' + that.data.lu_id + '&cat_id' + cat_id + '&cat_name' + cat_name
+      })
     },200)
   },
   save(){

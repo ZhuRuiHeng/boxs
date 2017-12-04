@@ -50,11 +50,11 @@ Page({
             luggageList: res.data.data
           })
           tips.success('添加行李箱成功！');
-          setTimeout(function(){
+          //setTimeout(function(){
               wx.switchTab({
                 url: '../index/index',
               })
-          },1000)
+          //},20)
       
         } else {
           tips.alert(res.data.msg);

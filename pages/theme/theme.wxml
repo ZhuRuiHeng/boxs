@@ -3,8 +3,9 @@
 </view>
 <view class="container" wx:else>
     <block wx:for="{{luggageList}}" wx:key="{{index}}"> 
-        <view class='item' bindtap='tapTheme' data-cat_id='{{item.cat_id}}'>
-            <view class='logo' data-cat_id='{{item.cat_id}}' wx:if="{{_cat_id==item.cat_id}}"> 
+        <view class='item' bindtap='tapTheme' data-cat_id='{{item.cat_id}}' 
+              data-cat_name='{{item.cat_name}}' data-=''>
+            <view class='logo' data-cat_id='{{item.cat_id}}' wx:if="{{cat_id==item.cat_id}}" > 
                 <image src="../image/next.png" mode="widthFix"></image>
             </view>
             <view class='logo' data-cat_id='{{item.cat_id}}' 

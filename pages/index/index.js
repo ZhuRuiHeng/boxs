@@ -6,11 +6,37 @@ import tips from '../../utils/tips.js'
 Page({
   data: {
     page: 1,
-    edit:false
+    edit:false,
+    showDialog: true //广告图
   },
   onLoad: function () {
+    let that = this;
+    setTimeout(function () {
+      that.setData({
+        showDialog: false
+      })
+    }, 3000)
+    //ad
+    wx.request({
+      url: "https://unify.playonweixin.com/site/get-advertisements",
+      success: function (res) {
+        console.log(res);
+        if (res.data.status) {
+          var advers = res.data.adver.advers;
+          var head_adver = res.data.adver.head_adver;
+          var broadcasting = res.data.adver.broadcasting;
+          wx.setStorageSync("advers", advers);
+          wx.setStorageSync("broadcasting", broadcasting);
+          that.setData({
+            broadcasting,
+            head_adver
+          })
+        }
+      }
+    })
   },
   onShow: function () {
+    console.log('show');
       let that = this;
       app.getAuth(function () {
         let userInfo = wx.getStorageSync('userInfo');
@@ -23,16 +49,17 @@ Page({
             },
             method: "GET",
             success: function (res) {
-              console.log("行李箱列表：",res);
+              
               let status = res.data.status;
               if (status==1){
+                console.log("行李箱列表：", res);
                     that.setData({
                       luggageList: res.data.data
                     })
               }else{  
-                 that.setData({
-                   air: true
-                 })
+                that.setData({
+                  luggageList: false
+                })
                  console.log(res.data.msg);
               }
             }
@@ -70,7 +97,7 @@ Page({
               console.log("删除商品", res);
               var status = res.data.status;
               if (status == 1) { //删除成功
-                tips.success('删除商品成功');
+                
                 // 更新行李箱列表
                 wx.request({
                   url: apiurl + "luggage/luggage-list?sign=" + sign + '&operator_id=' + app.data.kid,
@@ -79,15 +106,19 @@ Page({
                   },
                   method: "GET",
                   success: function (res) {
-                    console.log("行李箱列表：", res);
+                    
                     let status = res.data.status;
                     if (status == 1) {
-                      console.log(1);
+                      console.log("行李箱列表：", res);
+                      tips.success('删除商品成功');
                       that.setData({
                         luggageList: res.data.data
                       })
                     } else {
                       console.log(res.data.msg);
+                      that.setData({
+                        luggageList: false
+                      })
                     }
                   }
                 })

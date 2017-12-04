@@ -1,5 +1,8 @@
 <!--index.wxml-->
-<view  wx:if="{{air}}" style="text-align:center;padding:30rpx 0;font-size:32rpx;">
+<view class='dialog' wx:if="{{showDialog}}">
+    <image src='{{head_adver}}'></image>
+</view>
+<view  wx:if="{{!luggageList}}" style="text-align:center;padding:30rpx 0;font-size:32rpx;">
      <view class="classname">你还没有行李箱，快去新建</view>
 </view>
 <view class="container" wx:else>

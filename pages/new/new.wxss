@@ -30,6 +30,8 @@
 }
 .content .title input{
     flex:1;
+    position: relative;
+    top: 18rpx;
 }
 button{
   background: #3670eb;
