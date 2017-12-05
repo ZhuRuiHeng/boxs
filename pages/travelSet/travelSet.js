@@ -148,6 +148,8 @@ Page({
                 url: '../travel/travel?lu_id=' + that.data.lu_id,
               })
             }, 1000)
+            wx.removeStorageSync('cat_id');
+            wx.removeStorageSync('cat_name');
           } else {
             tips.alert(res.data.msg);
           }
@@ -176,6 +178,8 @@ Page({
                   url: '../travel/travel?lu_id=' + that.data.lu_id,
                 })
               },1000)
+              wx.removeStorageSync('cat_id');
+              wx.removeStorageSync('cat_name');
             } else {
               tips.alert(res.data.msg);
             }
@@ -187,7 +191,7 @@ Page({
   themeInput(){
     let that = this;
     wx.navigateTo({
-      url: '../theme/theme?lu_id=' + that.data.lu_id + '&cat_id=' + that.data.cat_id 
+      url: '../theme/theme?lu_id=' + that.data.lu_id + '&cat_id=' + that.data.cat_id + '&cat_name=' + that.data.cat_name + '&g_id=' + that.data.g_id
     })
   }
 })

@@ -12,9 +12,12 @@ Page({
   },
   onLoad: function (options) {
     console.log("options:", options);
+    wx.setStorageSync('cat_id', options.cat_id);
+    wx.setStorageSync('cat_name', options.cat_name);
       this.setData({
         lu_id: options.lu_id,
-        cat_id: options.cat_id
+        cat_id: options.cat_id,
+        g_id: options.g_id
       })
   },
   onShow: function () {
@@ -122,12 +125,12 @@ Page({
     let cat_name = e.currentTarget.dataset.cat_name;
     wx.setStorageSync('cat_id', cat_id);
     wx.setStorageSync('cat_name', cat_name);
-    console.log('redirectTo,wx.navigateBack');
+    console.log('redirectTo,wx.navigateBack', cat_name);
     var pages = getCurrentPages();
     console.log("pages:", pages);
     setTimeout(function(){
       wx.navigateBack({
-        url: '../theme/theme?lu_id=' + that.data.lu_id + '&cat_id' + cat_id + '&cat_name' + cat_name
+        url: '../theme/theme?lu_id=' + that.data.lu_id + '&cat_id' + cat_id + '&cat_name' + cat_name + '&g_id=' + that.data.g_id
       })
     },200)
   },
